@@ -7,7 +7,16 @@ export default {
     authReq: false
   },
   template,
-  controller: ['$scope', function($scope) {
-
-  }]
+  controller: ['$scope', '$auth','User', function($scope, $auth, User) {
+    $scope.user = {};
+    $scope.user.authenticate = function(provider){
+      $auth.authenticate(provider)
+        .then(function(response){
+          User.logIn(response.data);
+        })
+        .catch(function(error){
+          console.log(error);
+        });
+      };
+    }]
 };

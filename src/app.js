@@ -14,12 +14,25 @@ import configStateProvider from './providers/state-provider';
 /* Directives */
 import directives from './components/directives';
 
+/* HIDDEN CONFIGS */
+const config = process.env;
+
 const app = angular.module('rcApp', [
   angularRouter,
   angularMessages,
   satellizer,
   directives
 ]);
+
+
+app.constant('baseUrl', 'http://localhost:8080');
+
+app.config(['$authProvider','baseUrl', function($authProvider, baseUrl){
+  $authProvider.facebook({
+    clientId: config.FACEBOOK_APP_ID,
+    url: baseUrl+'/auth/facebook',
+  });
+}]);
 
 app.config(['$stateProvider','$urlRouterProvider', function($stateProvider,$urlRouterProvider) {
   $urlRouterProvider.otherwise('/home');
