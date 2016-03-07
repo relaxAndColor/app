@@ -14,14 +14,14 @@ import configStateProvider from './providers/state-provider';
 /* Directives */
 import directives from './components/directives';
 
-
-
 const app = angular.module('rcApp', [
   angularRouter,
   angularMessages,
   satellizer,
   directives
 ]);
+
+
 
 app.config(['$authProvider', function($authProvider){
   $authProvider.facebook({

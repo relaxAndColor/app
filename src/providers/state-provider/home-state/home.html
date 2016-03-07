@@ -1,2 +1,6 @@
 <h6> Welcome! This is the home page </h6>
+<button ui-sref='.login({})'> Log In </button>
+<button ui-sref='.register({})'> Register </button>
 <button ng-click='user.authenticate("facebook")'> Sign In With Facebook </button>
+
+<div ui-view> </div>

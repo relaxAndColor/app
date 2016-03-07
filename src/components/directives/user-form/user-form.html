@@ -1,0 +1,12 @@
+<form >
+  <h3>{{formType}}</h3>
+    <div>
+      <label for="email">Email: </label>
+      <input type="text" ng-model="userInfo.email" placeholder="Email">
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" ng-model="userInfo.password" placeholder="Password">
+    </div>
+  <button type="submit" ng-click=userInfo.submit(user)>Submit</button>
+</form>

@@ -17,6 +17,13 @@ export default {
         .catch(function(error){
           console.log(error);
         });
-      };
+    };
+    $scope.user.logIn = function() {
+      console.log('you tried to log in');
+    };
+    $scope.user.register = function() {
+      console.log('you tried to register');
+    };
     }]
+
 };
