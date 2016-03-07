@@ -23,12 +23,9 @@ const app = angular.module('rcApp', [
   directives
 ]);
 
-app.constant('baseUrl', 'http://localhost:8080');
-
-app.config(['$authProvider','baseUrl', function($authProvider, baseUrl){
+app.config(['$authProvider', function($authProvider){
   $authProvider.facebook({
-    clientId: '932535226864625',
-    url: baseUrl+'/auth/facebook',
+    clientId: '932535226864625'
   });
 }]);
 
