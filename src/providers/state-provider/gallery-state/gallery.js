@@ -1,5 +1,5 @@
 'use strict';
-import template from './home.html';
+import template from './gallery.html';
 
 export default {
   url: '/home',

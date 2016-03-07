@@ -1,10 +1,10 @@
 'use strict';
-import template from './home.html';
+import template from './personal-gallery.html';
 
 export default {
   url: '/home',
   data: {
-    authReq: false
+    auth: true
   },
   template,
   controller: ['$scope', function($scope) {
