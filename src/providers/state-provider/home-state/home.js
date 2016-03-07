@@ -4,10 +4,19 @@ import template from './home.html';
 export default {
   url: '/home',
   data: {
-    auth: false
+    authReq: false
   },
   template,
-  controller: ['$scope', function($scope) {
-
-  }]
-}
+  controller: ['$scope', '$auth', function($scope, $auth) {
+    $scope.user = {};
+    $scope.user.authenticate = function(provider){
+      $auth.authenticate(provider)
+        .then(function(response){
+          console.log('you logged in');
+        })
+        .catch(function(error){
+          console.log(error);
+        });
+      };
+    }]
+};
