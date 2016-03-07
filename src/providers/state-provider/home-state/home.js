@@ -7,12 +7,12 @@ export default {
     authReq: false
   },
   template,
-  controller: ['$scope', '$auth','User', function($scope, $auth, User) {
+  controller: ['$scope', '$auth', function($scope, $auth) {
     $scope.user = {};
     $scope.user.authenticate = function(provider){
       $auth.authenticate(provider)
         .then(function(response){
-          User.logIn(response.data);
+          console.log('you logged in');
         })
         .catch(function(error){
           console.log(error);
