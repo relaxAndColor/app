@@ -2,7 +2,7 @@
 import template from './personal-gallery.html';
 
 export default {
-  url: '/home',
+  url: '/personal-gallery',
   data: {
     auth: true
   },

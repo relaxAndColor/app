@@ -5,6 +5,7 @@ import registerState from './home-state/register-state/register';
 import galleryState from './gallery-state/gallery';
 import personalGalleryState from './personal-gallery-state/personal-gallery';
 import profileState from './profile-state/profile';
+import adminState from './admin-state/admin';
 
 
 export default function($stateProvider) {
@@ -14,5 +15,6 @@ export default function($stateProvider) {
     .state('home.register', registerState)
     .state('gallery', galleryState)
     .state('personalGallery', personalGalleryState)
-    .state('profile', profileState);
+    .state('profile', profileState)
+    .state('admin', adminState );
 }

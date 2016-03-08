@@ -1,0 +1,29 @@
+<form >
+  <h3>Add SVG File </h3>
+    <div>
+      <label for="name">Name:  </label>
+      <input type="text" ng-model="image.name" placeholder="Image Name">
+    </div>
+    <div>
+      <label for="category">Category: </label>
+      <input type="text" ng-model="image.category" placeholder="Category">
+    </div>
+    <div>
+      <label for="svg file">Svg content</label>
+      <textarea ng-model="image.svg" rows="10" cols="80"> </textarea>
+    </div>
+  <button type="submit" ng-click='image.submit(image)'>Submit</button>
+</form>
+<br>
+
+<div>
+  <div style='width: 25px; height: 25px; background-color: red; display: inline-block;' ng-click='assignColor("red")'> </div>
+  <div style='width: 25px; height: 25px; background-color: blue; display: inline-block;' ng-click='assignColor("blue")'> </div>
+  <div style='width: 25px; height: 25px; background-color: green; display: inline-block;' ng-click='assignColor("green")'> </div>
+  <div style='width: 25px; height: 25px; background-color: purple; display: inline-block;' ng-click='assignColor("purple")'> </div>
+  <div style='width: 25px; height: 25px; background-color: black; display: inline-block;' ng-click='assignColor("black")'> </div>
+  <div style='width: 25px; height: 25px; background-color: pink; display: inline-block;' ng-click='assignColor("pink")'> </div>
+</div>
+<div ng-click='image.color($event)'>
+  <div ng-bind-html='actualImage'> </div>
+</div>

@@ -2,7 +2,7 @@
 import template from './profile.html';
 
 export default {
-  url: '/home',
+  url: '/profile',
   data: {
     authReq: true
   },
