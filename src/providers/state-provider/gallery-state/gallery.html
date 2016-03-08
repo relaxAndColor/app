@@ -2,18 +2,12 @@
 <table>
    <thead>
      <tr>
-       <th>Name</th>
-       <th>Image</th>
        <th>Category</th>
-       <th>Uploaded</th>
      </tr>
    </thead>
    <tbody>
-     <tr ng-repeat='image in gallery.svgImages'>
-       <td ui-sref='color.svg({svgName:image.name})'>{{image.name}}</td>
-       <td>{{image.fileName}}</td>
-       <td>{{image.category}}</td>
-       <td>{{image.dateAdded}}</td>
+     <tr ng-repeat='category in gallery.categories'>
+       <td  ui-sref='category({categoryName:category})'>{{category}}</td>
      </tr>
    </tbody>
  </table>

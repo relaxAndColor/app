@@ -1,0 +1,11 @@
+.main-nav {
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+  li {
+    padding: 5px;
+  }
+}

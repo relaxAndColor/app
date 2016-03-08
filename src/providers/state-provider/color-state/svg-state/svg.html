@@ -6,13 +6,13 @@
 <button ng-click='svg.delete()'> Delete </button>
 
 <br>
-<color-picker ng-model="color">
-</color-picker>
-<div> current color :
-  <div style='width: 25px; height: 25px; background-color: {{color}}; display: inline-block;'> </div>
+<div ng-show='svg.colorImage'>
+  <color-picker ng-model="color">
+  </color-picker>
+  <div> current color :
+    <div style='width: 25px; height: 25px; background-color: {{color}}; display: inline-block;'> </div>
+  </div>
 </div>
-
-
 
 <div ng-click='svg.color($event)'>
   <div id='svgImage' ng-bind-html='svg.image'> </div>
