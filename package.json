@@ -4,8 +4,8 @@
   "description": "Front end of the relax and color app",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --hot",
-    "build": "webpack"
+    "start": "eval $(cat dev.env) webpack-dev-server --inline --hot",
+    "build": "eval $(cat prod.env) webpack"
   },
   "repository": {
     "type": "git",

@@ -24,7 +24,8 @@ const app = angular.module('rcApp', [
 
 app.config(['$authProvider', function($authProvider){
   $authProvider.facebook({
-    clientId: '932535226864625'
+    url: (API_URL || '') + '/auth/facebook',
+    clientId: CLIENT_ID
   });
 }]);
 
