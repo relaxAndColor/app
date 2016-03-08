@@ -7,10 +7,33 @@ export default {
     authReq: false
   },
   template,
-  controller: ['$scope', function($scope) {
-    $scope.click = function($event) {
-      $scope.clickedElement = angular.element($event.target);
-      $scope.clickedElement.css('fill', 'white');
-    };
+  resolve: {
+    load: function() {
+      var date = new Date();
+      return {svgImages: [
+        {
+          name: 'Goat',
+          category: 'Animals',
+          fileName: 'goat.svg',
+          dateAdded: date
+        },
+        {
+          name: 'Peacock',
+          category: 'Animals',
+          fileName: 'peacock.svg',
+          dateAdded: date
+        },
+        {
+          name: 'Bull',
+          category: 'Animals',
+          fileName: 'bull.svg',
+          dateAdded: date
+        }
+      ]};
+    }
+  },
+  controller: ['$scope','load', function($scope, load) {
+    $scope.gallery = {};
+    $scope.gallery.svgImages = load.svgImages;
   }]
 };

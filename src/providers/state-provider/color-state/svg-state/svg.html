@@ -1,0 +1,19 @@
+<h5>{{svg.name}} </h5>
+<button ng-click='svg.colorImage = true'> Color </button>
+<button ng-click='svg.reset()'> Reset To Blank </button>
+<button ng-click='svg.lastSaved()'> Remove Changes </button>
+<button ng-click='svg.save()'> Save </button>
+<button ng-click='svg.delete()'> Delete </button>
+
+<br>
+<color-picker ng-model="color">
+</color-picker>
+<div> current color :
+  <div style='width: 25px; height: 25px; background-color: {{color}}; display: inline-block;'> </div>
+</div>
+
+
+
+<div ng-click='svg.color($event)'>
+  <div id='svgImage' ng-bind-html='svg.image'> </div>
+</div>

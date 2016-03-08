@@ -1,10 +1,12 @@
 'use strict';
+/* Styling */
+import './style/colorpicker.css';
 
-/* Angular Vendors */
+/* Vendors */
 import angular from 'angular' ;
 import angularRouter from 'angular-ui-router';
 import angularMessages from 'angular-messages';
-
+import 'angular-color-picker';
 /* Authorization */
 import satellizer from 'satellizer';
 
@@ -17,6 +19,7 @@ import directives from './components/directives';
 const app = angular.module('rcApp', [
   angularRouter,
   angularMessages,
+  'mp.colorPicker',
   satellizer,
   directives
 ]);
