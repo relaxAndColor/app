@@ -26,6 +26,7 @@ export default {
     };
     $scope.svg.color = function($event) {
       $scope.clickedElement = angular.element($event.target);
+      console.log($scope.clickedElement);
       $scope.clickedElement.css('fill', $scope.color);
     };
     $scope.svg.reset = function() {
