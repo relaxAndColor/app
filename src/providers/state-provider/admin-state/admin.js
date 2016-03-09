@@ -7,10 +7,12 @@ export default {
     authReq: true
   },
   template,
-  controller: ['$scope','$sce', function($scope,  $sce) {
+  controller: ['$scope', 'Gallery', function($scope, Gallery) {
     $scope.image = {};
     $scope.image.submit = function(image) {
-      // save to database
+      Gallery.save(image).$promise.then(res => {
+        $scope.success = true;
+      });
     };
   }]
 };

@@ -6,6 +6,7 @@ import './style/colorpicker.css';
 import angular from 'angular' ;
 import angularRouter from 'angular-ui-router';
 import angularMessages from 'angular-messages';
+import ngResource from 'angular-resource';
 import 'angular-color-picker';
 
 /* Authorization */
@@ -23,17 +24,14 @@ import directives from './components/directives';
 const app = angular.module('rcApp', [
   angularRouter,
   angularMessages,
+  ngResource,
   'mp.colorPicker',
   satellizer,
   directives,
   factories
 ]);
 
-app.constant('API_URL', process.env.API_URL);
-app.constant('CLIENT_ID', process.env.CLIENT_ID);
-
-
-app.config(['$authProvider', 'API_URL','CLIENT_ID', function($authProvider, API_URL, CLIENT_ID){
+app.config(['$authProvider', function($authProvider) {
   $authProvider.facebook({
     url: (API_URL || '') + '/auth/facebook',
     clientId: CLIENT_ID

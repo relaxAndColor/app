@@ -8,14 +8,13 @@ export default {
   },
   template,
   resolve: {
-    load: function() {
-      return {categories: [
-        'Animals', 'Designs', 'All'
-      ]};
+    svg (Gallery) {
+      return Gallery.get({sort: '-view'}).$promise;
     }
   },
-  controller: ['$scope','load', function($scope, load) {
+  controller: ['$scope','svg', function($scope, svg) {
     $scope.gallery = {};
-    $scope.gallery.categories = load.categories;
+    $scope.gallery.categories = ['Animals', 'Design'];
+    $scope.images = svg.images;
   }]
 };
