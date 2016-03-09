@@ -3,6 +3,7 @@ import template from './svg.html';
 import goatSvg from './animals-svg/goat.html';
 import bullSvg from './animals-svg/bull.html';
 import peacockSvg from './animals-svg/peacock.html';
+import './svg.scss';
 var svgImages = {};
 svgImages['Goat'] = { personal: goatSvg, original: goatSvg };
 svgImages['Bull'] = { personal: bullSvg, original: bullSvg };
@@ -26,8 +27,9 @@ export default {
     };
     $scope.svg.color = function($event) {
       $scope.clickedElement = angular.element($event.target);
-      console.log($event.target.css);
-      $scope.clickedElement.css('fill', $scope.color);
+      console.log($event.target.style['fill']);
+      $event.target.style['fill'] = $scope.color;
+      $event.target.style['fill-opacity'] = 1;
     };
     $scope.svg.reset = function() {
       angular.element(document).find('svg').html(loadSVG.original);
