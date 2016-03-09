@@ -13,8 +13,8 @@
  </table>
 
 <div>
-  <div ng-repeat='image in images'>
-    {{image.svg}}
+  <div ng-repeat='image in gallery.images'>
+    <div ng-bind-html='image.svg'> </div>
     {{image.title}}
   </div>
 </div>

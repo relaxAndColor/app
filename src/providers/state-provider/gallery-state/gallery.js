@@ -15,6 +15,6 @@ export default {
   controller: ['$scope','svg', function($scope, svg) {
     $scope.gallery = {};
     $scope.gallery.categories = ['Animals', 'Design'];
-    $scope.images = svg.images;
+    $scope.gallery.images = svg.images;
   }]
 };
