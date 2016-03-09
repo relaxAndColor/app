@@ -1,23 +1,8 @@
 <h3> This is images page based on categories </h3>
-<h4> Category: {{category.name}} </h4>
 
-<table>
-   <thead>
-     <tr>
-       <th>Name</th>
-       <th>Image</th>
-       <th>Category</th>
-       <th> Views </th>
-       <th>Uploaded</th>
-     </tr>
-   </thead>
-   <tbody>
-     <tr ng-repeat='image in category.svgImages'>
-       <td ui-sref='color.svg({svgName:image.name})'>{{image.name}}</td>
-       <td>{{image.fileName}}</td>
-       <td>{{image.category}}</td>
-       <td>{{image.views}}</td>
-       <td>{{image.dateAdded}}</td>
-     </tr>
-   </tbody>
- </table>
+<div>
+  <div ng-repeat='image in category.svgImages'>
+    <div class='svgFile' ng-bind-html='image.svg'> </div>
+    {{image.title}}
+  </div>
+</div>

@@ -57,13 +57,22 @@ export default {
   },
   template,
   resolve: {
+    svg (Gallery, $sce) {
+      return Gallery.get({sort: '-view'}).$promise.then(function(svg){
+        svg.images.forEach(function(object){
+          object.svg = $sce.trustAsHtml(object.svg);
+        });
+        return svg.images;
+      });
+    },
     loadCategory: function($stateParams) {
-      return categoryImages[$stateParams.categoryName];
+      // load on category here
     }
   },
-  controller: ['$scope','loadCategory','$stateParams', function($scope, loadCategory, $stateParams) {
+  controller: ['$scope','loadCategory','$stateParams','svg', function($scope, loadCategory, $stateParams, svg) {
     $scope.category = {};
     $scope.category.name = $stateParams.categoryName;
-    $scope.category.svgImages = loadCategory;
+    console.log($stateParams.categoryName);
+    $scope.category.svgImages = svg;
   }]
 };
