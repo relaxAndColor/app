@@ -48,10 +48,10 @@ categoryImages['Designs'] = [
     dateAdded: date
   }
 ];
-categoryImages['All'] = categoryImages['Designs'].concat(categoryImages['Animals']);
+
 
 export default {
-  url: '/gallery/:categoryName',
+  url: '/:categoryName',
   data: {
     authReq: false
   },
