@@ -1,23 +1,6 @@
 <h3> This is the gallery page </h3>
-<table>
-   <thead>
-     <tr>
-       <th>Category</th>
-     </tr>
-   </thead>
-   <tbody>
-     <tr ng-repeat='category in gallery.categories'>
-       <td  ui-sref='.category({categoryName:category})'>{{category}}</td>
-     </tr>
-   </tbody>
- </table>
-
-<div>
-  <div ng-repeat='image in gallery.images'>
-    <div class='svgFile' ng-bind-html='image.svg'> </div>
-    {{image.title}}
-  </div>
-</div>
-
+<ul ng-repeat='category in gallery.categories'>
+  <li  ui-sref='.category({categoryName:category})'>{{category}}</li>
+</ul>
 
 <div ui-view> </div>
