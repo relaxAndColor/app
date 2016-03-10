@@ -21,10 +21,14 @@ import factories from './providers/factories';
 /* Directives */
 import directives from './components/directives';
 
+/*State Controllers */
+import stateControllers from './providers/state-provider/state-controllers';
+
 const app = angular.module('rcApp', [
   angularRouter,
   angularMessages,
   ngResource,
+  stateControllers,
   'mp.colorPicker',
   satellizer,
   directives,
@@ -41,15 +45,15 @@ app.config(['$authProvider', function($authProvider) {
 app.config(['$stateProvider','$urlRouterProvider', function($stateProvider,$urlRouterProvider) {
   $urlRouterProvider.otherwise('/home');
   configStateProvider($stateProvider);
+}])
+.run(['$rootScope', '$auth','$state', function($rootScope, $auth, $state) {
+    $rootScope.$on('$stateChangeStart', function(event,toState, toParms){
+      if(toState.data && toState.data.auth && !$auth.isAuthenticated()) {
+        event.preventDefault();
+        $state.transitionTo('home');
+      }
+    });
 }]);
-// .run(['$rootScope', '$auth','$state', function($rootScope, $auth, $state) {
-//     $rootScope.$on('$stateChangeStart', function(event,toState, toParms){
-//       if(toState.data && toState.data.auth && !$auth.isAuthenticated()) {
-//         event.preventDefault();
-//         $state.transitionTo('home');
-//       }
-//     });
-// }]);
 
 
 
