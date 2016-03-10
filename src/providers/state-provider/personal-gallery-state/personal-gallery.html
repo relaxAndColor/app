@@ -1,5 +1,5 @@
 <h3> This is images page based on categories </h3>
-<h4> You are currently signed in as {{personal.user}} </h4>
+<h4> You are currently signed in as {{personal.user.displayName}} </h4>
 <div id='container'>
   <div class='svgInfo' ng-repeat='image in personal.svgImages' ui-sref='color.svg({svgId:image.original._id, personal:image._id})'>
     <div class='svgFile' ng-bind-html='image.svg'></div>

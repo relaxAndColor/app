@@ -1,6 +1,6 @@
 'use strict';
 export default function(ngModule) {
-  ngModule.controller('homeCtrl',['$scope', '$auth', function($scope, $auth) {
+  ngModule.controller('homeCtrl',['$scope', '$auth', '$window', 'UserService', function($scope, $auth, $window, User) {
     $scope.user = {};
     $scope.user.authenticate = function(provider){
       $auth.authenticate(provider)
@@ -11,11 +11,18 @@ export default function(ngModule) {
           console.log(error);
         });
     };
+    $scope.user.logOut = function() {
+      $window.localStorage.removeItem('satellizer_token');
+    };
     $scope.register = function(user) {
-      console.log('you tried to register');
+      User.signup(user).then( data => {
+        $window.localStorage.setItem('satellizer_token', data.token);
+      });
     };
     $scope.logIn = function(user) {
-      console.log('you tried to log in');
+      User.login(user).then( data => {
+        $window.localStorage.setItem('satellizer_token', data.token);
+      });
     };
   }]
 );
