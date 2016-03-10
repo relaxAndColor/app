@@ -8,10 +8,5 @@ export default {
     authReq: false
   },
   template,
-  controller: ['$scope', function($scope) {
-    $scope.gallery = {};
-    $scope.gallery.categories = ['Popular','Animal', 'Abstract', 'Floral'];
-    $scope.gallery.category = 'Popular';
-
-  }]
+  controller: 'galleryCtrl'
 };

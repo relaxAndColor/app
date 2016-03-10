@@ -1,7 +1,5 @@
 'use strict';
 import homeState from './home-state/home';
-import loginState from './home-state/log-in-state/log-in';
-import registerState from './home-state/register-state/register';
 import galleryState from './gallery-state/gallery';
 import categoryState from './gallery-state/category-state/category';
 import personalGalleryState from './personal-gallery-state/personal-gallery';
@@ -14,8 +12,6 @@ import svgState from './color-state/svg-state/svg';
 export default function($stateProvider) {
   $stateProvider
     .state('home', homeState )
-    .state('home.login', loginState)
-    .state('home.register', registerState)
     .state('gallery', galleryState)
     .state('gallery.category', categoryState)
     .state('personalGallery', personalGalleryState)
