@@ -21,51 +21,5 @@ export default {
       });
     }
   },
-  controller: function($scope, $sce, $state, $stateParams, loadPersonal, loadOriginal, SVG, Gallery) {
-    var originalId = $stateParams.svgId;
-    var personalId = $stateParams.personal;
-    $scope.added = false;
-    if (personalId) {
-      $scope.added = true;
-    }
-    $scope.svg = {};
-    $scope.svg.name = loadOriginal.title;
-    $scope.svg.image = loadPersonal ? loadPersonal.svg : loadOriginal.svg;
-
-    $scope.addToPersonal = function() {
-      SVG.save({}, {original: originalId}).$promise.then( savedImg => {
-        $state.go('color.svg', {personal: savedImg._id}, {reload: false});
-      });
-    };
-    $scope.svg.color = function($event) {
-      $event.target.style.fill = $scope.svg.chosenColor;
-      $event.target.style['fill-opacity'] = 1;
-      $scope.svg.image = $sce.trustAsHtml(document.getElementById('svgImage').innerHTML);
-    };
-    $scope.svg.reset = function() {
-      $scope.updated = false;
-      Gallery.get({image_id: originalId}).$promise
-      .then( original => {
-        return SVG.update({image_id: personalId}, {svg: original.svg}).$promise;
-      })
-      .then( saved => {
-        $scope.updated = true;
-        $scope.svg.image = $sce.trustAsHtml(saved.svg);
-      });
-    };
-    $scope.svg.save = function() {
-      var current = document.getElementById('svgImage').innerHTML;
-      $scope.updated = false;
-      SVG.update({image_id: personalId}, {svg: current}).$promise.then( saved => {
-        $scope.svg.image = $sce.trustAsHtml(saved.svg);
-        $scope.updated = true;
-      });
-    };
-    $scope.svg.lastSaved = function() {
-      SVG.get({image_id: personalId}).$promise
-      .then( image => {
-        $scope.svg.image = $sce.trustAsHtml(image.svg);
-      });
-    };
-  }
+  controller: 'svgCtrl'
 };
