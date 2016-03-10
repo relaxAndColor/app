@@ -2,7 +2,13 @@
 
 <div>
   <div ng-repeat='image in category.svgImages'>
-    <div class='svgFile' ng-bind-html='image.svg'> </div>
     {{image.title}}
+    <div class='svgFile' ng-bind-html='image.svg'></div>
   </div>
+</div>
+
+<div>See More
+  <ul>
+      <li ng-repeat="i in getNumber(pages) track by $index" ng-click="seePage($index + 1)"><span>{{$index+1}}</span></li>
+  </ul>
 </div>
