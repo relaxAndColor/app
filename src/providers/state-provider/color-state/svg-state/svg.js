@@ -7,15 +7,18 @@ export default {
   url: '/:svgName',
   template,
   resolve: {
-    loadSVG: function($stateParams) {
-      return '<h1> filler </h1>';
+    loadSVG: function($stateParams, Gallery, $sce) {
+      return Gallery.get({image_id: $stateParams.svgName}).$promise.then( image => {
+        image.svg = $sce.trustAsHtml(image.svg);
+        return image;
+      });
     }
   },
   controller: ['$scope', '$stateParams', 'loadSVG', '$sce', function($scope, $stateParams, loadSVG, $sce) {
     $scope.svg = {};
-    $scope.svg.name = $stateParams.svgName;
+    $scope.svg.name = loadSVG.title;
     $scope.svg.lastSavedImage = angular.copy(loadSVG.personal);
-    $scope.svg.image = $sce.trustAsHtml(loadSVG.personal);
+    $scope.svg.image = loadSVG.svg;
     $scope.svg.assignColor = function(color) {
       $scope.color = color;
     };
