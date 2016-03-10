@@ -1,18 +1,16 @@
 {
   "undef": true,
   "strict": false,
+  "node": true,
   "globals": {
     "require"     : false,
     "angular"     : false,
     "document"    : false,
+    "window"      : false,
     "exports"     : false,
     "module"      : false,
-    "describe"    : false,
     "process"     : false,
     "console"     : false,
-    "it"          : false,
-    "Buffer"      : false,
-    "before"      : false,
     "API_URL"     : false,
     "CLIENT_ID"   : false
   },
