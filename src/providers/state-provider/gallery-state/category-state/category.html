@@ -10,6 +10,7 @@
 
 <div>See More
   <ul>
-      <li ng-repeat="i in getNumber(pages) track by $index" ng-click="seePage($index + 1)"><span>{{$index+1}}</span></li>
+      <li ng-repeat="page in pages track by $index">
+        <span ui-sref='{page:($index+1)}'>{{$index+1}}</span></li>
   </ul>
 </div>

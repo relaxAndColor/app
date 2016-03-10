@@ -1,8 +1,9 @@
+
 <div> Search By Category:
   <select ng-model='gallery.category'>
     <option ng-repeat='category in gallery.categories' value='{{category}}'>{{category}}</option>
   </select>
-  <button ui-sref='.category({categoryName:gallery.category})'>Search</button>
+  <button ui-sref='.category({categoryName:category, page:"1"})'>Search</button>
 </div>
 
 <div ui-view></div>

@@ -10,7 +10,8 @@ export default {
   template,
   controller: ['$scope', function($scope) {
     $scope.gallery = {};
-    $scope.gallery.categories = ['popular','Animal', 'Abstract', 'Floral'];
-    $scope.gallery.category = 'popular';
+    $scope.gallery.categories = ['Popular','Animal', 'Abstract', 'Floral'];
+    $scope.gallery.category = 'Popular';
+
   }]
 };
