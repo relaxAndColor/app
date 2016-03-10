@@ -25,26 +25,13 @@ export default {
       });
     }
   },
-  controller: function($scope, $stateParams, svg, Gallery, $sce) {
-    $scope.category = {};
-    $scope.category.svgImages = svg.images;
-    $scope.getNumber = function(num) {
-      return new Array(num);
-    };
-    $scope.pages = Math.ceil(svg.count / 10);
-    $scope.seePage = function (page) {
-      Gallery.get({
-        sort: '-view',
-        page
-      }).$promise.then( newSvgs =>  {
-        newSvgs.images.forEach( obj => {
-          obj.svg = $sce.trustAsHtml(obj.svg);
-        });
-        $scope.category.svgImages = obj.svg;
-        $scope.pages = Math.ceil(obj.count / 10);
-      })
-    }
+  controller: function($scope, $stateParams, svg, Gallery, SVG, $sce) {
     $scope.svgImages = svg.images;
     $scope.pages = new Array( Math.ceil(svg.count / 10) );
+    $scope.colorImg = function (img) {
+      SVG.save({}, {original: img._id}).$promise.then( () => {
+        //transition to color page
+      });
+    };
   }
 };

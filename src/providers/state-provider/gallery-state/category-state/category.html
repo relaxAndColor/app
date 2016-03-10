@@ -1,7 +1,6 @@
-
 <h3> This is images page based on categories </h3>
 <div id='container'>
-  <div class='svgInfo' ng-repeat='image in category.svgImages'>
+  <div class='svgInfo' ng-repeat='image in svgImages'>
     <div class='svgFile' ng-bind-html='image.svg'> </div>
     <div>Title: {{image.title}} </div>
     <button ng-click='add(image)'> Add to Personal Gallery </button>
