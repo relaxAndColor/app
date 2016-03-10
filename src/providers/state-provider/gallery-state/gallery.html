@@ -1,6 +1,7 @@
-<h3> This is the gallery page </h3>
+<h3>This is the gallery page</h3>
+<p>Click on a category to see more</p>
 <ul ng-repeat='category in gallery.categories'>
-  <li  ui-sref='.category({categoryName:category})'>{{category}}</li>
+  <li ui-sref='.category({categoryName:category})'>{{category}}</li>
 </ul>
 
-<div ui-view> </div>
+<div ui-view></div>

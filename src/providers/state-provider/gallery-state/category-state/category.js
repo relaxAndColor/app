@@ -1,54 +1,5 @@
 'use strict';
 import template from './category.html';
-var categoryImages = {};
-var date = new Date();
-categoryImages['Animals'] =  [
-  {
-    name: 'Goat',
-    category: 'Animals',
-    fileName: 'goat.svg',
-    views: 10,
-    dateAdded: date
-  },
-  {
-    name: 'Peacock',
-    category: 'Animals',
-    fileName: 'peacock.svg',
-    views: 100,
-    dateAdded: date
-  },
-  {
-    name: 'Bull',
-    category: 'Animals',
-    fileName: 'bull.svg',
-    views: 2,
-    dateAdded: date
-  }
-];
-categoryImages['Designs'] = [
-  {
-    name: 'Leaves',
-    category: 'Designs',
-    fileName: 'leaves.svg',
-    views: 12,
-    dateAdded: date
-  },
-  {
-    name: 'Circles',
-    category: 'Designs',
-    fileName: 'circle.svg',
-    views: 19,
-    dateAdded: date
-  },
-  {
-    name: 'Squares',
-    category: 'Designs',
-    fileName: 'squares.svg',
-    views: 19,
-    dateAdded: date
-  }
-];
-
 
 export default {
   url: '/:categoryName',
@@ -57,22 +8,37 @@ export default {
   },
   template,
   resolve: {
-    svg (Gallery, $sce) {
-      return Gallery.get({sort: '-view'}).$promise.then(function(svg){
+    svg (Gallery, $sce, $stateParams) {
+      var query = { sort: '-view' };
+      if ($stateParams.categoryName !== 'popular') {
+        query.category = $stateParams.categoryName;
+      }
+      return Gallery.get(query).$promise.then(function(svg){
         svg.images.forEach(function(object){
           object.svg = $sce.trustAsHtml(object.svg);
         });
-        return svg.images;
+        return svg;
       });
-    },
-    loadCategory: function($stateParams) {
-      // load on category here
     }
   },
-  controller: ['$scope','loadCategory','$stateParams','svg', function($scope, loadCategory, $stateParams, svg) {
+  controller: function($scope, $stateParams, svg, Gallery, $sce) {
     $scope.category = {};
-    $scope.category.name = $stateParams.categoryName;
-    console.log($stateParams.categoryName);
-    $scope.category.svgImages = svg;
-  }]
+    $scope.category.svgImages = svg.images;
+    $scope.getNumber = function(num) {
+      return new Array(num);
+    };
+    $scope.pages = Math.ceil(svg.count / 10);
+    $scope.seePage = function (page) {
+      Gallery.get({
+        sort: '-view',
+        page
+      }).$promise.then( newSvgs => {
+        newSvgs.images.forEach( obj => {
+          obj.svg = $sce.trustAsHtml(object.svg);
+        });
+        $scope.category.svgImages = obj.svg;
+        $scope.pages = Math.ceil(obj.count / 10);
+      })
+    }
+  }
 };
