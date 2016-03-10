@@ -1,19 +1,20 @@
 <div id='controls'>
   <h5>Image Name: {{svg.name}} </h5>
-  <button ng-click='svg.reset()'> Reset To Blank </button>
-  <button ng-click='svg.lastSaved()'> Remove Changes </button>
-  <button ng-click='svg.save()'> Save </button>
-  <button ng-click='svg.delete()'> Delete </button>
+    <button ng-click='svg.reset()'> Reset To Blank </button>
+    <button ng-click='svg.lastSaved()'> Remove Changes </button>
+    <button ng-click='svg.save()'> Save </button>
+    <button ng-click="addToPersonal()">Color</button>
 </div>
 
-<div id='color'>
+<div ng-show="updated">Updated!</div>
+<!-- <div ng-bind-html="svg.image"></div> -->
 
-  <div id='svgImage' ng-click='svg.color($event)' ng-bind-html='svg.image'> </div>
+<div id='color'>
+  <div id='svgImage' ng-click='svg.color($event)' ng-bind-html='svg.image'></div>
   <div>
-    <color-picker ng-model="color">
-    </color-picker>
+    <color-picker ng-model="svg.chosenColor"></color-picker>
     <div id='colorPallette'> current color :
-      <span id='currentColor' style='background-color: {{color}};'> </span>
+      <span id='currentColor' style='background-color: {{svg.chosenColor}};'></span>
     </div>
   </div>
 </div>
