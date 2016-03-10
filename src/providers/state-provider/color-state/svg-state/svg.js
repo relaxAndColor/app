@@ -2,13 +2,20 @@
 import template from './svg.html';
 import './svg.scss';
 
-
 export default {
-  url: '/:svgName',
+  url: '/:svgId?personal',
   template,
   resolve: {
-    loadSVG: function($stateParams, Gallery, $sce) {
-      return Gallery.get({image_id: $stateParams.svgName}).$promise.then( image => {
+    loadPersonal: function($stateParams, SVG, $sce) {
+      if ($stateParams.personal) {
+        return SVG.get({image_id: $stateParams.personal}).$promise.then( image => {
+          image.svg = $sce.trustAsHtml(image.svg);
+          return image;
+        });
+      } else return undefined;
+    },
+    loadOriginal: function($stateParams, Gallery, $sce) {
+      return Gallery.get({image_id: $stateParams.svgId}).$promise.then( image => {
         image.svg = $sce.trustAsHtml(image.svg);
         return image;
       });
