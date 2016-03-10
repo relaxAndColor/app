@@ -1,6 +1,6 @@
 'use strict';
 import template from './category.html';
-
+import './category.scss';
 export default {
   url: '/:categoryName?page',
   data: {
