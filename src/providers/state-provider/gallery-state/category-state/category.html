@@ -1,7 +1,7 @@
 <h3> This is images page based on categories </h3>
 
 <div>
-  <div ng-repeat='image in category.svgImages'>
+  <div ng-repeat='image in svgImages'>
     {{image.title}}
     <div class='svgFile' ng-bind-html='image.svg'></div>
   </div>
@@ -9,6 +9,7 @@
 
 <div>See More
   <ul>
-      <li ng-repeat="i in getNumber(pages) track by $index" ng-click="seePage($index + 1)"><span>{{$index+1}}</span></li>
+      <li ng-repeat="page in pages track by $index">
+        <span ui-sref='{page:($index+1)}'>{{$index+1}}</span></li>
   </ul>
 </div>
