@@ -13,8 +13,8 @@ export default function( ngModule ) {
 			},
 			controller: ['$scope',function($scope) {
         $scope.userInfo = {};
-        $scope.userInfo.submit = function(user) {
-          $scope.userAction(user);
+        $scope.signin = function() {
+          $scope.userAction()($scope.userInfo);
         };
 		  }]
 		};

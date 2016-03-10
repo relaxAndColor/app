@@ -7,6 +7,8 @@ import angular from 'angular' ;
 import angularRouter from 'angular-ui-router';
 import angularMessages from 'angular-messages';
 import ngResource from 'angular-resource';
+import store from 'angular-storage';
+import jwt from 'angular-jwt';
 import 'angular-color-picker';
 
 /* Authorization */
@@ -28,6 +30,8 @@ const app = angular.module('rcApp', [
   angularRouter,
   angularMessages,
   ngResource,
+  store,
+  jwt,
   stateControllers,
   'mp.colorPicker',
   satellizer,
@@ -48,14 +52,12 @@ app.config(['$stateProvider','$urlRouterProvider', function($stateProvider,$urlR
 }])
 .run(['$rootScope', '$auth','$state', function($rootScope, $auth, $state) {
     $rootScope.$on('$stateChangeStart', function(event,toState, toParms){
-      if(toState.data && toState.data.auth && !$auth.isAuthenticated()) {
+      if(toState.data && toState.data.authReq && !$auth.isAuthenticated()) {
         event.preventDefault();
         $state.transitionTo('home');
       }
     });
 }]);
-
-
 
 angular.element(document).ready(function() {
   angular.bootstrap(document, ['rcApp']);

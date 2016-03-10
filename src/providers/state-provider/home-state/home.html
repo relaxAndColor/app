@@ -2,7 +2,8 @@
 <button ng-click='user.logIn = true; user.register = false'> Log In </button>
 <button ng-click='user.register = true; user.logIn = false'> Register </button>
 <button ng-click='user.authenticate("facebook")'> Sign In With Facebook </button>
+<button ng-click='user.logOut()'>Log Out</button>
 
-<user-form ng-show='user.logIn' form-type="Log In" user-action=logIn(user)> </user-form>
+<user-form ng-show='user.logIn' form-type="Log In" user-action=logIn> </user-form>
 
-<user-form ng-show='user.register' form-type="Register" user-action=register(user)> </user-form>
+<user-form ng-show='user.register' form-type="Register" user-action=register> </user-form>

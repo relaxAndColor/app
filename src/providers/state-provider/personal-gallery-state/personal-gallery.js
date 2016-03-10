@@ -8,31 +8,13 @@ export default {
   },
   template,
   resolve: {
-    loadPersonal: function() {
-      var date = new Date();
-      return {svgImages: [
-        {
-          name: 'Goat',
-          user: 'Batman',
-          category: 'Animals',
-          fileName: 'personal-goat.svg',
-          dateAdded: date
-        },
-        {
-          name: 'Peacock',
-          user: 'Batman',
-          category: 'Animals',
-          fileName: 'personal-peacock.svg',
-          dateAdded: date
-        },
-        {
-          name: 'Bull',
-          user: 'Batman',
-          category: 'Animals',
-          fileName: 'personal-bull.svg',
-          dateAdded: date
-        }
-      ]};
+    loadPersonal: function(SVG, $sce) {
+      return SVG.query().$promise.then( images => {
+        images.forEach( obj => {
+          obj.svg = $sce.trustAsHtml(obj.svg);
+        });
+        return images;
+      });
     }
   },
   controller: 'personalGalleryCtrl'
