@@ -28,10 +28,5 @@ export default {
   controller: function($scope, $stateParams, svg, Gallery, SVG, $sce) {
     $scope.svgImages = svg.images;
     $scope.pages = new Array( Math.ceil(svg.count / 10) );
-    $scope.colorImg = function (img) {
-      SVG.save({}, {original: img._id}).$promise.then( () => {
-        //transition to color page
-      });
-    };
   }
 };
