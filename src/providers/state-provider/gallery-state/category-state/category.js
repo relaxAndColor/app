@@ -1,6 +1,6 @@
 'use strict';
 import template from './category.html';
-
+import './category.scss';
 export default {
   url: '/:categoryName',
   data: {
@@ -32,9 +32,9 @@ export default {
       Gallery.get({
         sort: '-view',
         page
-      }).$promise.then( newSvgs => {
+      }).$promise.then( newSvgs =>  {
         newSvgs.images.forEach( obj => {
-          obj.svg = $sce.trustAsHtml(object.svg);
+          obj.svg = $sce.trustAsHtml(obj.svg);
         });
         $scope.category.svgImages = obj.svg;
         $scope.pages = Math.ceil(obj.count / 10);

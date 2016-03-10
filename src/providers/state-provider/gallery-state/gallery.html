@@ -1,7 +1,8 @@
-<h3>This is the gallery page</h3>
-<p>Click on a category to see more</p>
-<ul ng-repeat='category in gallery.categories'>
-  <li ui-sref='.category({categoryName:category})'>{{category}}</li>
-</ul>
+<div> Search By Category:
+  <select ng-model='gallery.category'>
+    <option ng-repeat='category in gallery.categories' value='{{category}}'>{{category}}</option>
+  </select>
+  <button ui-sref='.category({categoryName:gallery.category})'>Search</button>
+</div>
 
 <div ui-view></div>

@@ -1,19 +1,14 @@
 'use strict';
 import template from './svg.html';
-import goatSvg from './animals-svg/goat.html';
-import bullSvg from './animals-svg/bull.html';
-import peacockSvg from './animals-svg/peacock.html';
-var svgImages = {};
-svgImages['Goat'] = { personal: goatSvg, original: goatSvg };
-svgImages['Bull'] = { personal: bullSvg, original: bullSvg };
-svgImages['Peacock'] = { personal: peacockSvg, original: peacockSvg };
+import './svg.scss';
+
 
 export default {
   url: '/:svgName',
   template,
   resolve: {
     loadSVG: function($stateParams) {
-      return svgImages[$stateParams.svgName];
+      return '<h1> filler </h1>';
     }
   },
   controller: ['$scope', '$stateParams', 'loadSVG', '$sce', function($scope, $stateParams, loadSVG, $sce) {
@@ -25,9 +20,8 @@ export default {
       $scope.color = color;
     };
     $scope.svg.color = function($event) {
-      $scope.clickedElement = angular.element($event.target);
-      console.log($event.target.css);
-      $scope.clickedElement.css('fill', $scope.color);
+      $event.target.style['fill'] = $scope.color;
+      $event.target.style['fill-opacity'] = 1;
     };
     $scope.svg.reset = function() {
       angular.element(document).find('svg').html(loadSVG.original);
