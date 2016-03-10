@@ -51,11 +51,17 @@ app.config(['$stateProvider','$urlRouterProvider', function($stateProvider,$urlR
   configStateProvider($stateProvider);
 }])
 .run(['$rootScope', '$auth','$state', function($rootScope, $auth, $state) {
+    $rootScope.wating=false;
     $rootScope.$on('$stateChangeStart', function(event,toState, toParms){
       if(toState.data && toState.data.authReq && !$auth.isAuthenticated()) {
         event.preventDefault();
         $state.transitionTo('home');
+      } else {
+        $rootScope.waiting = true;
       }
+    });
+    $rootScope.$on('$stateChangeSuccess', function() {
+      $rootScope.waiting = false;
     });
 }]);
 

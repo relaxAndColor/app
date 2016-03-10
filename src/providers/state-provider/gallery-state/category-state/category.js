@@ -8,7 +8,7 @@ export default {
   },
   template,
   resolve: {
-    svg (Gallery, $sce, $stateParams) {
+    svg (Gallery, $sce, $stateParams,$timeout) {
       window.scrollTo(0, 0);
       var query = { sort: '-view' };
       if ($stateParams.categoryName !== 'Popular') {
