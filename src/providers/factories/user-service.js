@@ -1,6 +1,6 @@
 export default function( ngModule ) {
 
-  ngModule.factory( 'UserService', function( $http ) {
+  ngModule.factory( 'UserService', function( $http, $window, $rootScope, jwtHelper ) {
 
     var service = {};
 
@@ -22,6 +22,18 @@ export default function( ngModule ) {
       }).then(function(res) {
         return res.data;
       });
+    };
+
+    service.setUser = function(token) {
+      token = token || $window.localStorage.getItem('satellizer_token');
+      if (token) {
+        $rootScope.userPayload = jwtHelper.decodeToken(token);
+      }
+    };
+
+    service.removeUser = function() {
+      window.localStorage.removeItem('satellizer_token');
+      $rootScope.userPayload = undefined;
     };
 
     return service;

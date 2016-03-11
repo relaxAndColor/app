@@ -48,15 +48,15 @@ app.config(['$stateProvider','$urlRouterProvider', function($stateProvider,$urlR
   $urlRouterProvider.otherwise('/home');
   configStateProvider($stateProvider);
 }])
-.run(['$rootScope', '$auth','$state', 'AdminService', function($rootScope, $auth, $state, Admin) {
+.run( function($rootScope, $auth, $state, UserService) {
     $rootScope.root = {};
     $rootScope.root.wating=false;
-    Admin.checkUser(); // rootScope.root.admin gets added to true of user is admin
-    $rootScope.$on('$stateChangeStart', function(event,toState, toParms){
-      if(toState.data && toState.data.authReq && !$auth.isAuthenticated()) {
+    UserService.setUser();
+    $rootScope.$on('$stateChangeStart', function (event,toState, toParms) {
+      if (toState.data && toState.data.authReq && !$auth.isAuthenticated() ) {
         event.preventDefault();
         $state.transitionTo('home');
-      } else if (toState.data && toState.data.adminReq && !$rootScope.root.admin) {
+      } else if (toState.data && toState.data.adminReq && !$rootScope.userPayload.admin) {
         event.preventDefault();
         $state.transitionTo('home');
       } else {
@@ -66,7 +66,7 @@ app.config(['$stateProvider','$urlRouterProvider', function($stateProvider,$urlR
     $rootScope.$on('$stateChangeSuccess', function() {
       $rootScope.root.waiting = false;
     });
-}]);
+});
 
 angular.element(document).ready(function() {
   angular.bootstrap(document, ['rcApp']);
