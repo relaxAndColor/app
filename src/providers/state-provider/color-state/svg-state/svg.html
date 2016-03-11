@@ -4,12 +4,13 @@
     <button ng-click='svg.reset()'> Reset To Blank </button>
     <button ng-click='svg.lastSaved()'> Remove Changes </button>
     <button ng-click='svg.save()'> Save </button>
-    <button ng-click='svg.delete()'>Delete</button>
+    <button ng-click='svg.confirmDelete = true'>Delete</button>
+    <button style='background-color: red;'ng-show='svg.confirmDelete' ng-click='svg.delete()'>Confirm Delete </button>
   </div>
     <button ng-hide='added' ng-click="addToPersonal()">Color</button>
 </div>
 
-<div ng-show="updated">Updated!</div>
+<div class='center' ng-show="updated">Updated!</div>
 
 <div class='svgContainer'>
   <div id='svgImage' ng-click='svg.color($event)' ng-bind-html='svg.image'></div>

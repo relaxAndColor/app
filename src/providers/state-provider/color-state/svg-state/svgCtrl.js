@@ -10,7 +10,7 @@ export default function(ngModule) {
     $scope.svg = {};
     $scope.svg.name = loadOriginal.title;
     $scope.svg.image = loadPersonal ? loadPersonal.svg : loadOriginal.svg;
-
+    $scope.svg.confirmDelete = false;
     $scope.addToPersonal = function() {
       SVG.save({}, {original: originalId}).$promise.then( savedImg => {
         $state.go('color.svg', {personal: savedImg._id}, {reload: false});
@@ -21,6 +21,8 @@ export default function(ngModule) {
       $event.target.style.fill = $scope.svg.chosenColor;
       $event.target.style['fill-opacity'] = 1;
       $scope.svg.image = $sce.trustAsHtml(document.getElementById('svgImage').innerHTML);
+      $scope.svg.confirmDelete = false;
+      $scope.updated = false;
     };
     $scope.svg.reset = function() {
       $scope.updated = false;
@@ -31,6 +33,7 @@ export default function(ngModule) {
       .then( saved => {
         $scope.updated = true;
         $scope.svg.image = $sce.trustAsHtml(saved.svg);
+        $scope.svg.confirmDelete = false;
       });
     };
     $scope.svg.save = function() {
@@ -39,17 +42,20 @@ export default function(ngModule) {
       SVG.update({image_id: personalId}, {svg: current}).$promise.then( saved => {
         $scope.svg.image = $sce.trustAsHtml(saved.svg);
         $scope.updated = true;
+        $scope.svg.confirmDelete = false;
       });
     };
     $scope.svg.lastSaved = function() {
       SVG.get({image_id: personalId}).$promise
       .then( image => {
         $scope.svg.image = $sce.trustAsHtml(image.svg);
+        $scope.svg.confirmDelete = false;
       });
     };
     $scope.svg.delete = function() {
       SVG.delete({image_id:personalId}).$promise
       .then( () => {
+        $scope.svg.confirmDelete = false;
         $state.go('personalGallery');
       });
     };
