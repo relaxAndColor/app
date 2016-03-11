@@ -1,20 +1,42 @@
-
-<form >
-  <h3>Add SVG File </h3>
+<h3 class='center-text'>Add SVG File </h3>
+<form id='adminForm' name='svgForm' novalidate>
     <div>
-      <label for="name">Name:  </label>
-      <input type="text" ng-model="image.title" placeholder="Image Name">
+      <label for="title">Title:  </label>
+      <input name='title' type="text"
+      ng-model="image.title"
+      placeholder="Image Title"
+      ng-model-options="{ updateOn: 'default blur', debounce: { default: 250, blur: 0 } }"
+      required>
     </div>
+    <div ng-messages="svgForm.title.$error" ng-if="svgForm.$submitted || svgForm.title.$touched">
+      <div class='form-error' ng-message="required">Title Required</div>
+    </div>
+    <br>
     <div>
-      Category:
-      <select ng-model='image.category'>
+      <label for="category">Category:  </label>
+      <select name='categoryForm'
+        ng-model='image.category'
+        ng-model-options="{ updateOn: 'default blur', debounce: { default: 250, blur: 0 } }"
+        required>
+        <option value=''>-- Select Category -- </option>
         <option ng-repeat='category in image.categories' value='{{category}}'>{{category}}</option>
       </select>
     </div>
-    <div>
-      <label for="svg file">Svg content</label>
-      <textarea ng-model="image.svg" rows="10" cols="80"> </textarea>
+    <div ng-messages="svgForm.categoryForm.$error" ng-if="svgForm.$submitted || svgForm.categoryForm.$touched">
+      <div class='form-error' ng-message="required">Category Required</div>
     </div>
-  <button type="submit" ng-click='image.submit(image)'>Submit</button>
+    <br>
+    <div>
+      <div class='alignVertical'> 
+        <label for="svg file">Svg Content:  </label>
+        <textarea name='svgFile' ng-model="image.svg" rows="10" cols="80" required> </textarea>
+      </div>
+    </div>
+    <div ng-messages="svgForm.svgFile.$error" ng-if="svgForm.$submitted || svgForm.svgFile.$touched">
+      <div class='form-error' ng-message="required">Svg File Required</div>
+    </div>
+  <br>
+  <button type="submit" ng-click='svgForm.$valid ? image.submit(image) : return'>Submit</button>
+
   <div ng-if="success">Added SVG image</div>
 </form>
