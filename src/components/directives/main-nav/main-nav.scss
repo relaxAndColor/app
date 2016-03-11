@@ -1,4 +1,4 @@
-.main-nav {
+main-nav {
   ul {
     list-style: none;
     display: flex;
@@ -6,6 +6,7 @@
     flex-direction: row;
   }
   li {
+    color: green;
     padding: 5px;
   }
 }

@@ -7,7 +7,7 @@ import loader from './loader/loader';
 
 const directives = angular.module( 'directives', [] );
 
-mainHeader(directives);
+//mainHeader(directives);
 mainNav(directives);
 navLink(directives);
 userForm(directives);
