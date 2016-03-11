@@ -10,6 +10,8 @@ export default function( ngModule ) {
         method: 'POST',
         data: user
       }).then(function(res) {
+        $rootScope.notAdminError = false;
+        $rootScope.notAuthorizedError = false;
         return res.data;
       });
     };
@@ -20,6 +22,8 @@ export default function( ngModule ) {
         method: 'POST',
         data: user
       }).then(function(res) {
+        $rootScope.notAdminError = false;
+        $rootScope.notAuthorizedError = false;
         return res.data;
       });
     };
@@ -29,11 +33,15 @@ export default function( ngModule ) {
       if (token) {
         $rootScope.userPayload = jwtHelper.decodeToken(token);
       }
+      $rootScope.notAdminError = false;
+      $rootScope.notAuthorizedError = false;
     };
 
     service.removeUser = function() {
       window.localStorage.removeItem('satellizer_token');
       $rootScope.userPayload = undefined;
+      $rootScope.notAdminError = false;
+      $rootScope.notAuthorizedError = false;
     };
 
     return service;

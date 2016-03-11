@@ -1,5 +1,5 @@
 <div id='controls'>
-  <h5>Image Name: {{svg.name}} </h5>
+  <h4>Image Name: <span class='cool-font'>{{svg.name}} </span> </h4>
   <div ng-show='added'>
     <button ng-click='svg.reset()'> Reset To Blank </button>
     <button ng-click='svg.lastSaved()'> Remove Changes </button>
@@ -12,7 +12,7 @@
 <div ng-show="updated">Updated!</div>
 <!-- <div ng-bind-html="svg.image"></div> -->
 
-<div id='color'>
+<div class='svgContainer'>
   <div id='svgImage' ng-click='svg.color($event)' ng-bind-html='svg.image'></div>
   <div ng-show='added'>
     <color-picker ng-model="svg.chosenColor"></color-picker>

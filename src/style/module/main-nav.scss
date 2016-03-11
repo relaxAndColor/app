@@ -1,0 +1,42 @@
+@import './themes/colors';
+@import './themes/fonts';
+
+.main-nav {
+  background-color: $nav-background-color;
+  text-align: center;
+  padding: .25px 0;
+  border: solid 2px black;
+  border-top: none;
+  margin-bottom: 20px;
+  height: 3.4em;
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.navTab {
+  padding:0 10px;
+  color: $nav-links-color;
+  cursor: pointer;
+  font-weight: bolder;
+  font-family: $mainHeaderFont;
+  -webkit-transition: font-size 0.4s, color 0.4s;
+          transition: font-size 0.4s, color 0.4s;
+  &:hover {
+    color: $nav-links-color-hover;
+    font-weight: bold;
+    font-size: 1.3em;
+  }
+  a {
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: $mainHeaderFont;
+    color: $nav-links-color;
+    &:hover {
+      color: $nav-links-color-hover;
+    }
+  }
+}

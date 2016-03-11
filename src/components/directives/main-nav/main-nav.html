@@ -1,10 +1,10 @@
 <nav class='main-nav'>
   <ul>
-    <nav-link state='home' page-name='Home' />
-    <nav-link state='gallery.category({categoryName:"Popular"})' page-name='Gallery' />
-    <nav-link state='personalGallery' page-name='Personal Gallery' />
-    <nav-link state='profile' page-name='Profile' />
-    <nav-link state='admin' ng-show='userPayload.admin' page-name='Admin' />
-    <li ng-show="userPayload" ng-click="logout()">Logout</li>
+    <nav-link state='home' page-name='Home' class='navTab' />
+    <nav-link state='gallery.category({categoryName:"Popular"})' page-name='Gallery' class='navTab' />
+    <nav-link state='personalGallery' page-name='Personal Gallery' class='navTab'  />
+    <!-- <nav-link state='profile' page-name='Profile' /> -->
+    <nav-link state='admin' ng-show='userPayload.admin' page-name='Admin' class='navTab'  />
+    <li ng-show="userPayload" ng-click="logout()" class='navTab' >Logout</li>
   </ul>
 </nav>

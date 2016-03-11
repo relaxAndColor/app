@@ -1,7 +1,5 @@
 'use strict';
 import template from './main-nav.html';
-import './main-nav.scss';
-
 export default function( ngModule ) {
 	ngModule.directive( 'mainNav', function() {
 		return {

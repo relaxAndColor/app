@@ -38,7 +38,8 @@ const app = angular.module('rcApp', [
   'mp.colorPicker',
   satellizer,
   directives,
-  factories
+  factories,
+  validators
 ]);
 
 app.config(['$authProvider', function($authProvider) {
@@ -60,11 +61,15 @@ app.config(['$stateProvider','$urlRouterProvider', function($stateProvider,$urlR
       if (toState.data && toState.data.authReq && !$auth.isAuthenticated() ) {
         event.preventDefault();
         $state.transitionTo('home');
+        $rootScope.notAuthorizedError = true;
       } else if (toState.data && toState.data.adminReq && !$rootScope.userPayload.admin) {
         event.preventDefault();
         $state.transitionTo('home');
+        $rootScope.notAdminError = true;
       } else {
         $rootScope.root.waiting = true;
+        $rootScope.notAdminError = false;
+        $rootScope.notAuthorizedError = false;
       }
     });
     $rootScope.$on('$stateChangeSuccess', function() {
