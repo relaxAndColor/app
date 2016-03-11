@@ -7,7 +7,6 @@ import angular from 'angular' ;
 import angularRouter from 'angular-ui-router';
 import angularMessages from 'angular-messages';
 import ngResource from 'angular-resource';
-import store from 'angular-storage';
 import jwt from 'angular-jwt';
 import 'angular-color-picker';
 
@@ -30,7 +29,6 @@ const app = angular.module('rcApp', [
   angularRouter,
   angularMessages,
   ngResource,
-  store,
   jwt,
   stateControllers,
   'mp.colorPicker',

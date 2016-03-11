@@ -4,7 +4,7 @@ import template from './personal-gallery.html';
 export default {
   url: '/personal-gallery',
   data: {
-    auth: true
+    authReq: true
   },
   template,
   resolve: {
