@@ -5,7 +5,7 @@ import template from './gallery.html';
 export default {
   url: '/gallery',
   data: {
-    authReq: false
+    authReq: true
   },
   template,
   controller: 'galleryCtrl'

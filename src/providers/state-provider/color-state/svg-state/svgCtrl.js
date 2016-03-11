@@ -14,6 +14,7 @@ export default function(ngModule) {
     $scope.addToPersonal = function() {
       SVG.save({}, {original: originalId}).$promise.then( savedImg => {
         $state.go('color.svg', {personal: savedImg._id}, {reload: false});
+        $scope.added = true;
       });
     };
     $scope.svg.color = function($event) {

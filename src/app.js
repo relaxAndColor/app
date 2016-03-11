@@ -50,18 +50,23 @@ app.config(['$stateProvider','$urlRouterProvider', function($stateProvider,$urlR
   $urlRouterProvider.otherwise('/home');
   configStateProvider($stateProvider);
 }])
-.run(['$rootScope', '$auth','$state', function($rootScope, $auth, $state) {
-    $rootScope.wating=false;
+.run(['$rootScope', '$auth','$state', 'AdminService', function($rootScope, $auth, $state, Admin) {
+    $rootScope.root = {};
+    $rootScope.root.wating=false;
+    Admin.checkUser(); // rootScope.root.admin gets added to true of user is admin
     $rootScope.$on('$stateChangeStart', function(event,toState, toParms){
       if(toState.data && toState.data.authReq && !$auth.isAuthenticated()) {
         event.preventDefault();
         $state.transitionTo('home');
+      } else if (toState.data && toState.data.adminReq && !$rootScope.root.admin) {
+        event.preventDefault();
+        $state.transitionTo('home');
       } else {
-        $rootScope.waiting = true;
+        $rootScope.root.waiting = true;
       }
     });
     $rootScope.$on('$stateChangeSuccess', function() {
-      $rootScope.waiting = false;
+      $rootScope.root.waiting = false;
     });
 }]);
 
