@@ -1,0 +1,23 @@
+.center-text {
+  text-align: center;
+}
+
+#adminForm {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+
+  .alignVertical {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    textarea {
+      width: 100%;
+      max-width: 400px;
+      margin: 10px;
+    }
+  }
+}
