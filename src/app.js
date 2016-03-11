@@ -39,7 +39,8 @@ const app = angular.module('rcApp', [
   'mp.colorPicker',
   satellizer,
   directives,
-  factories
+  factories,
+  validators
 ]);
 
 app.config(['$authProvider', function($authProvider) {
@@ -60,12 +61,16 @@ app.config(['$stateProvider','$urlRouterProvider', function($stateProvider,$urlR
     $rootScope.$on('$stateChangeStart', function (event,toState, toParms) {
       if (toState.data && toState.data.authReq && !$auth.isAuthenticated() ) {
         event.preventDefault();
-        $state.transitionTo('home');
+        $state.transitionTo('home', {}, {reload: true});
+        $rootScope.notAuthorizedError = true;
       } else if (toState.data && toState.data.adminReq && !$rootScope.userPayload.admin) {
         event.preventDefault();
-        $state.transitionTo('home');
+        $state.transitionTo('home', {}, {reload: true});
+        $rootScope.notAdminError = true;
       } else {
         $rootScope.root.waiting = true;
+        $rootScope.notAdminError = false;
+        $rootScope.notAuthorizedError = false;
       }
     });
     $rootScope.$on('$stateChangeSuccess', function() {

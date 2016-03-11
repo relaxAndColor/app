@@ -1,52 +1,11 @@
-@import '../scss/style-assets';
+@import './base/base';
 
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
+@import './layout/alignment';
+@import './layout/cool-font';
 
-/*
- * -- BASE STYLES --
- * Most of these are inherited from Base, but I want to change a few.
- */
-
-body {
-  margin: 0 auto;
-  line-height: 1.7em;
-  color: $paragraph-font-color;
-  font-size: 16px;
-  font-family: 'Open Sans', sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-label {
-    color: $header-font-color;
-}
-
-.pure-img-responsive {
-    max-width: 100%;
-    height: auto;
-}
-
-/*
- * -- LAYOUT STYLES --
- * These are some useful classes
- */
-.l-box {
-    padding: 1em;
-}
-
-.l-box-lrg {
-    padding: 2em;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-}
-
-.is-center {
-    text-align: center;
-}
+@import './module/user-form';
+@import './module/main-header';
+@import './module/form-validation';
+@import './module/search-by-category';
+@import './module/gallery-svgs';
+@import './module/color-svg';

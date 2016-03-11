@@ -1,4 +1,4 @@
-<h3 class='center-text'>Add SVG File </h3>
+<h3 class='center-text clear-nav'>Add SVG File </h3>
 <form id='adminForm' name='svgForm' novalidate>
     <div>
       <label for="title">Title:  </label>
@@ -27,7 +27,7 @@
     </div>
     <br>
     <div>
-      <div class='alignVertical'> 
+      <div class='alignVertical'>
         <label for="svg file">Svg Content:  </label>
         <textarea name='svgFile' ng-model="image.svg" rows="10" cols="80" required> </textarea>
       </div>
@@ -36,7 +36,7 @@
       <div class='form-error' ng-message="required">Svg File Required</div>
     </div>
   <br>
-  <button type="submit" ng-click='svgForm.$valid ? image.submit(image) : return'>Submit</button>
+  <button class="pure-button" type="submit" ng-click='svgForm.$valid ? image.submit(image) : return'>Submit</button>
 
   <div ng-if="success">Added SVG image</div>
 </form>

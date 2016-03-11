@@ -33,12 +33,16 @@
         </p>
       </div>
 
-      <div class="l-box-lrg pure-u-1 pure-u-md-2-5" ng-if="!userPayload">
+
+      <div class="l-box-lrg pure-u-1 pure-u-md-2-5" ng-if="!userPayload" id="loginBox">
+        <div ng-if="notAuthorizedError || notAdminError">Please login or register</div>
 
           <div ng-hide="userPayload">
             <user-form ng-show='user.logIn' form-type="Log In" user-action=logIn></user-form>
             <user-form ng-show='user.register' form-type="Register" user-action=register> </user-form>
           </div>
+
+          <br />
 
           <div ng-if="!userPayload">
             <button ng-click='user.logIn=true; user.register=false' class="pure-button"> Log In </button>

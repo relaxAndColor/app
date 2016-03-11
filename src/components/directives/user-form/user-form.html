@@ -1,5 +1,7 @@
-<form name='userForm' novalidate class="pure-form pure-form-stacked">
+<form name='userForm' novalidate>
   <h3>{{formType}}</h3>
+  <form name='userForm' novalidate>
+
     <div>
       <label for="email">Email: </label>
       <input type="email"
@@ -15,11 +17,10 @@
         <div class='form-error' ng-message="email">Needs to be a valid email...</div>
         <div class='form-error' ng-message="noWhitespaceValidator">Email cannot contain spaces </div>
       </div>
-      <div ng-messages="userForm.email.$valid" ng-if="userForm.$submitted || userForm.email.$touched">
-         <div class='form-success' >Email Valid</div>
-      </div>
     </div>
+
     <br>
+
     <div>
       <label for="password">Password: </label>
       <input type="password"
@@ -44,6 +45,9 @@
          <div class='form-success'>Password Valid</div>
       </div>
     </div>
+
     <br>
-  <button type="submit" ng-click='userForm.$valid ? signin() : return' class="pure-button">Submit</button>
+
+    <button type="submit" ng-click='userForm.$valid ? signin() : return' class="pure-button">Submit</button>
+
 </form>
