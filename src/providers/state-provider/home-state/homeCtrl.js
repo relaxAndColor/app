@@ -5,7 +5,7 @@ export default function(ngModule) {
     $scope.user.authenticate = function(provider){
       $auth.authenticate(provider)
         .then( response => {
-          UserService.setUser();
+          UserService.setUser();        
         })
         .catch(function(error){
           console.log(error);
