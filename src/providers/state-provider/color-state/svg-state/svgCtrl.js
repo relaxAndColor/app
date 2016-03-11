@@ -47,5 +47,11 @@ export default function(ngModule) {
         $scope.svg.image = $sce.trustAsHtml(image.svg);
       });
     };
+    $scope.svg.delete = function() {
+      SVG.delete({image_id:personalId}).$promise
+      .then( () => {
+        $state.go('personalGallery');
+      });
+    };
   });
 }
