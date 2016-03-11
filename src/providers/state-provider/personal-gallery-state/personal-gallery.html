@@ -1,5 +1,5 @@
 <h3 class='center clear-nav'> Personal Gallery </h3>
-<h4 class='center'> You are currently signed in as {{personal.user.displayName}} </h4>
+<h4 class='center'> You are currently signed in as {{username}} </h4>
 <div class='svgContainer'>
   <div class='svgListInfo' ng-repeat='image in personal.svgImages' ui-sref='color.svg({svgId:image.original._id, personal:image._id})'>
     <div>Title: {{image.original.title}}</div>
