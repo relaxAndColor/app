@@ -10,6 +10,7 @@ export default function( ngModule ) {
         method: 'POST',
         data: user
       }).then(function(res) {
+        $window.localStorage.setItem('satellizer_token', res.data.token);
         $rootScope.notAdminError = false;
         $rootScope.notAuthorizedError = false;
         return res.data;
@@ -22,6 +23,7 @@ export default function( ngModule ) {
         method: 'POST',
         data: user
       }).then(function(res) {
+        $window.localStorage.setItem('satellizer_token', res.data.token);
         $rootScope.notAdminError = false;
         $rootScope.notAuthorizedError = false;
         return res.data;
