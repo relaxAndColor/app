@@ -10,7 +10,7 @@ export default {
   resolve: {
     svg (Gallery, $sce, $stateParams,$timeout) {
       window.scrollTo(0, 0);
-      var query = { sort: '-view' };
+      var query = { sort: '-views' };
       if ($stateParams.categoryName !== 'Popular') {
         query.category = $stateParams.categoryName;
       }
