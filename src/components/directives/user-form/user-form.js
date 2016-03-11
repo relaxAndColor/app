@@ -16,6 +16,7 @@ export default function( ngModule ) {
         $scope.signin = function() {
           $scope.userAction()($scope.userInfo);
           $scope.userInfo = {};
+          $scope.userForm.$setUntouched();
         };
 		  }]
 		};
