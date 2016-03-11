@@ -4,7 +4,7 @@ import './category.scss';
 export default {
   url: '/:categoryName?page',
   data: {
-    authReq: false
+    authReq: true
   },
   template,
   resolve: {
