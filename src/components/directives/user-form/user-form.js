@@ -15,6 +15,7 @@ export default function( ngModule ) {
         $scope.userInfo = {};
         $scope.signin = function() {
           $scope.userAction()($scope.userInfo);
+          $scope.userInfo = {};
         };
 		  }]
 		};

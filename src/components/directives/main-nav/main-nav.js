@@ -8,16 +8,12 @@ export default function( ngModule ) {
 			replace: true,
 			restrict: 'E',
 			template,
-      controller: function mainNavCtr ($scope, $rootScope, $state, $window, jwtHelper) {
+      controller: function mainNavCtr ($scope, $state, UserService) {
 
-        var token = $window.localStorage.getItem('satellizer_token');
-        if (token) {
-          $rootScope.userPayload = jwtHelper.decodeToken(token);
-        }
+        UserService.setUser();
 
         $scope.logout = function() {
-          $rootScope.userPayload = undefined;
-          $window.localStorage.removeItem('satellizer_token');
+          UserService.removeUser();
           $state.go('home');
         };
       }

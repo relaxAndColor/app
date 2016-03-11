@@ -1,35 +1,29 @@
 'use strict';
 export default function(ngModule) {
-  ngModule.controller('homeCtrl',['$scope', '$auth', '$window', 'UserService', 'AdminService','jwtHelper', '$rootScope', function($scope, $auth, $window, User, Admin,jwtHelper, $rootScope) {
+  ngModule.controller('homeCtrl', function($scope, $auth, UserService) {
     $scope.user = {};
     $scope.user.authenticate = function(provider){
       $auth.authenticate(provider)
-        .then(function(response){
-          Admin.checkUser();
-          var token = $window.localStorage.getItem('satellizer_token');
-          $rootScope.userPayload = jwtHelper.decodeToken(token);
+        .then( response => {
+          UserService.setUser();
         })
         .catch(function(error){
           console.log(error);
         });
     };
     $scope.user.logOut = function() {
-      $window.localStorage.removeItem('satellizer_token');
-      Admin.checkUser();
-      $rootScope.userPayload = undefined;
+      UserService.removeUser();
     };
     $scope.register = function(user) {
-      User.signup(user).then( data => {
-        $window.localStorage.setItem('satellizer_token', data.token);
-        $rootScope.userPayload = jwtHelper.decodeToken(data.token);
+      UserService.signup(user).then( data => {
+        UserService.setUser(data.token);
       });
     };
     $scope.logIn = function(user) {
-      User.login(user).then( data => {
-        $window.localStorage.setItem('satellizer_token', data.token);
-        $rootScope.userPayload = jwtHelper.decodeToken(data.token);
+      UserService.login(user).then( data => {
+        UserService.setUser(data.token);
       });
     };
-  }]
+  }
 );
 }
