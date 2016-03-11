@@ -23,10 +23,10 @@ are adult coloring books. Coloring in complicated designs, that allow you to tur
 the outside world and simply let your creative mind flow, can act as soothing form of meditation.
 It gives you the feeling of being able to act like a kid again and come up with an artistic, eye pleasing,
 colorful piece that only you yourself thought of. It doesn't require much of a effort but in a world where
-time is money, some people might just might not be able to find the time in their day to sit down a slowly
+time is money, some people just might not be able to find the time in their day to sit down and slowly
 fill in a page.
 
-This app is designed to make that time available for people who still want that relaxing feeling that people
+This app is designed to make that time available for people who still want that relaxing feeling people
 get from working on coloring books for adults. It is meant to bring the coloring book to your screen so you can color
 anytime or anywhere in quick fashion but still get the satisfaction of creating a colorful picture from a blank canvas.
 Instead of having to color in every dot and worry about going outside the lines (which I hate) you will be able to simply
@@ -35,21 +35,21 @@ click on a certain color and then click the area of the image where you want tha
 ## User Stories:
 #### Authentication
   1. As a user I want to be able to sign in with a third party authentication system or create my own personal account
-  2. As a developer I want my user's personal account information whether it be created through a email or a username to be encrypted
+  2. As a developer I want my user's personal account information to be encrypted
   in the database along with my password so I can know my account security is safe.
   3. As a developer I want to have ensured authentication passed through all requests to my database to verify the request is allowed.
   I want to do this through either a token or cookie system using something like satellizer.
 
 #### Layout
-  1. As a developer I want to the site to look well put together and be able to be explored easily by the user.
-  2. As a developer I want to use SMACSS principles in organizing my CSS/SCSS
-  3. As a developer I want to add some subtle animations that make transitions more visually pleasing for the user.
-  4. As a user I want the site to be uplifting and colorful with a mellow layout.
-  5. As a developer I want to use flex box to organize the images so they are easy to choose from for a user.
-  6. I want to use AngularJS to control the content of my app and how its functionality is controlled.
+  1. As a developer I want the site to look well put together and be able to be explored easily by the user
+  2. As a developer I want to use SMACSS principles to organize my CSS/SCSS
+  3. As a developer I want to add some subtle animations that make transitions more visually pleasing for the user
+  4. As a user I want the site to be uplifting and colorful with a mellow layout
+  5. As a developer I want to use flex box to organize the images so they are easy to choose from for a user
+  6. I want to use AngularJS to control the content of my app and how its functionality is controlled
 
 #### Database
-  1. As a developer I want to use mongolabs database where I can store information regarding my user's personal information and the
+  1. As a developer I want to use mLabs database where I can store information regarding my user's personal information and the
   svg images that we will be allowing the user to choose from when it comes to the next picture they want to use.
   2. As a developer I want to use the mongoose module to be able to communicate with my mongo database and possibly use a restify api in order to make the app a RESTful about with CRUD capabilities
 
@@ -64,7 +64,7 @@ click on a certain color and then click the area of the image where you want tha
     - As a user I want to be able to click on the image I want to color and have it take me to a page with that image blown up and ready to be colored.
   3. Coloring Page
     - As a user I want to be able to choose colors from a color-palette simply by clicking on it and it display the current color I have chosen.
-    - As a user I want to be able to click on a part of a image and have that image but filled in with the color I specified.
+    - As a user I want to be able to click on a part of a image and have that image part filled in with the color I specified.
     - As a user I want to be able to save my current work and come back to it so I don't have to start over everytime.
     - As a user I want to be able to go back to my last saved point of my image and begin again.
     - As a user I want to be able to wipe the image completely and start over from scratch.
