@@ -1,10 +1,13 @@
-<nav class='main-nav'>
-  <ul>
-    <nav-link state='home' page-name='Home' />
-    <nav-link state='gallery.category({categoryName:"Popular"})' page-name='Gallery' />
-    <nav-link state='personalGallery' page-name='Personal Gallery' />
-    <nav-link state='profile' page-name='Profile' />
-    <nav-link state='admin' ng-show='userPayload.admin' page-name='Admin' />
-    <li ng-show="userPayload" ng-click="logout()">Logout</li>
-  </ul>
-</nav>
+<div class="header">
+  <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+    <a class="pure-menu-heading" ui-sref="home">Relax and Color</a>
+
+    <ul class="pure-menu-list">
+      <li class="pure-menu-item"><a ui-sref="home" class="pure-menu-link">Home</a></li>
+      <li class="pure-menu-item"><a ui-sref="gallery.category({categoryName:'Popular'})" class="pure-menu-link">Gallery</a></li>
+      <li class="pure-menu-item"><a ui-sref="personalGallery" class="pure-menu-link">Personal Gallery</a></li>
+      <li class="pure-menu-item"><a ui-sref="admin" ng-show='userPayload.admin' class="pure-menu-link">Admin</a></li>
+      <li class="pure-menu-item"><a ng-click="logout()" ng-show='userPayload.admin' class="pure-menu-link">Logout</a></li>
+    </ul>
+  </div>
+</div>

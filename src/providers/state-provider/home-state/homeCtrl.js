@@ -2,6 +2,7 @@
 export default function(ngModule) {
   ngModule.controller('homeCtrl', function($scope, $auth, UserService) {
     $scope.user = {};
+    $scope.user.register = true;
     $scope.user.authenticate = function(provider){
       $auth.authenticate(provider)
         .then( response => {

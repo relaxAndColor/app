@@ -2,6 +2,7 @@
 /* Styling */
 import './style/colorpicker.css';
 import './style/main.scss';
+import 'purecss';
 
 /* Vendors */
 import angular from 'angular' ;
