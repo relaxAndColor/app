@@ -42,11 +42,12 @@
 
 }
 
-@media (max-width: 750px) {
+@media (max-width: 800px) {
     .pure-menu-horizontal {
         height: 150px !important;
         display: flex;
         flex-direction: column;
+        text-align: center;
         flex-wrap: wrap;
         white-space: normal;
         justify-content: center;
@@ -54,6 +55,8 @@
     .pure-menu-list {
         display: flex !important;
         flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
     }
     .clear-nav {
         margin-top: 200px !important;
