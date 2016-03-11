@@ -2,6 +2,7 @@
 /* Styling */
 import './style/colorpicker.css';
 import './style/main.scss';
+import 'purecss';
 
 /* Vendors */
 import angular from 'angular' ;
@@ -60,11 +61,11 @@ app.config(['$stateProvider','$urlRouterProvider', function($stateProvider,$urlR
     $rootScope.$on('$stateChangeStart', function (event,toState, toParms) {
       if (toState.data && toState.data.authReq && !$auth.isAuthenticated() ) {
         event.preventDefault();
-        $state.transitionTo('home');
+        $state.transitionTo('home', {}, {reload: true});
         $rootScope.notAuthorizedError = true;
       } else if (toState.data && toState.data.adminReq && !$rootScope.userPayload.admin) {
         event.preventDefault();
-        $state.transitionTo('home');
+        $state.transitionTo('home', {}, {reload: true});
         $rootScope.notAdminError = true;
       } else {
         $rootScope.root.waiting = true;

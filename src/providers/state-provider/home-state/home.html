@@ -1,28 +1,60 @@
-<h3 class='center' id='homeHeader'>Welcome!</h3>
-<div class='center'>
-  <button ng-if="!userPayload" ng-click='user.logIn = true; user.register = false'> Log In </button>
-  <button ng-if="!userPayload" ng-click='user.register = true; user.logIn = false'> Register </button>
-  <button ng-if="!userPayload" ng-click='user.authenticate("facebook")'> Sign In With Facebook </button>
-</div>
-  <user-form class='user-form' ng-show='user.logIn && !userPayload' form-type="Log In" user-action=logIn> </user-form>
-  <user-form class='user-form' ng-show='user.register && !userPayload' form-type="Register" user-action=register> </user-form>
-
-<div ng-hide='notAdminError || notAuthorizedError'>
-  <p>
-    Sometimes people need to just relax and unwind. One way to do this that is all the rage right now are adult coloring books.
-    Coloring in complicated designs allows you to turn your brain off to the outside world and simply let your creative mind flow. That can be as soothing as forms of meditation.
-    It gives you the feeling of being able to act like a kid again and come up with an artistic, eye pleasing, colorful piece that only you yourself thought of.
-    It doesn't require much of a effort but in a world where time is money, some people might just might not be able to find the time in their day to sit down a slowly fill in a page.
-  </p>
-
-  <p>
-    This app is designed to make that time available for people who still want that relaxing feeling that people get from working on coloring books for adults.
-    It is meant to bring the coloring book to your screen so you can color anytime or anywhere in quick fashion but still get the satisfaction of creating a colorful
-    picture from a blank canvas. Instead of having to color in every dot and worry about going outside the lines (which I hate) you will be able to simply click on a
-    certain color and then click the area of the image where you want that color to be filled in.
-  </p>
+<div class="splash-container">
+    <div class="splash">
+        <h1 class="splash-head">Relax and Color!</h1>
+        <p class="splash-subhead">
+            Welcome to our coloring app.
+        </p>
+        <p>
+            <a ui-sref="gallery.category({categoryName:'Popular'})" class="pure-button pure-button-primary">Browse</a>
+        </p>
+    </div>
 </div>
 
-<p class='center' ng-show='notAuthorizedError && !userPayload'> You must log in or register before you can view the site... </p>
+<div class="content-wrapper">
+  <div class="content">
+    <h2 class="content-head is-center">What we offer</h2>
+    <div class="pure-g">
 
-<p class='center' ng-show='notAdminError && !userPayload'> You are not authorized to view that part of the site... </p>
+      <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
+        <h4>Why a coloring app?</h4>
+        <p>
+            Sometimes people need to just relax and unwind. One way to do this that is all the rage right now are adult coloring books.
+            Coloring in complicated designs allows you to turn your brain off to the outside world and simply let your creative mind flow. That can be as soothing as forms of meditation.
+            It gives you the feeling of being able to act like a kid again and come up with an artistic, eye pleasing, colorful piece that only you yourself thought of.
+            It doesn't require much of a effort but in a world where time is money, some people just might not be able to find the time in their day to sit down and slowly fill in a page.
+        </p>
+
+        <h4>Our goals</h4>
+        <p>
+            This app is designed to make that time available for people who still want that relaxing feeling people get from working on coloring books for adults.
+            It is meant to bring the coloring book to your screen so you can color anytime or anywhere in a quick fashion but still get the satisfaction of creating a colorful
+            picture from a blank canvas. Instead of having to color in every dot and worry about going outside the lines (which I hate) you will be able to simply click on a
+            certain color and then click the area of the image where you want that color to be filled in.
+        </p>
+      </div>
+
+
+      <div class="l-box-lrg pure-u-1 pure-u-md-2-5" ng-if="!userPayload" id="loginBox">
+        <div ng-if="notAuthorizedError || notAdminError">Please login or register</div>
+
+          <div ng-hide="userPayload">
+            <user-form ng-show='user.logIn' form-type="Log In" user-action=logIn></user-form>
+            <user-form ng-show='user.register' form-type="Register" user-action=register> </user-form>
+          </div>
+
+          <br />
+
+          <div ng-if="!userPayload">
+            <button ng-click='user.logIn=true; user.register=false' class="pure-button"> Log In </button>
+            <button ng-click='user.register=true; user.logIn=false' class="pure-button"> Register </button>
+            <button ng-click='user.authenticate("facebook")' class="pure-button"> Sign In With Facebook </button>
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer l-box is-center">
+      Made by Whitney Harvey and Max Jacobsen
+  </div>
+</div>

@@ -1,12 +1,11 @@
-@import './base/base.scss';
+@import './base/base';
 
-@import './layout/alignment.scss';
-@import './layout/cool-font.scss';
+@import './layout/alignment';
+@import './layout/cool-font';
 
-@import './module/user-form.scss';
-@import './module/main-nav.scss';
-@import './module/main-header.scss';
-@import './module/form-validation.scss';
-@import './module/search-by-category.scss';
-@import './module/gallery-svgs.scss';
-@import './module/color-svg.scss';
+@import './module/user-form';
+@import './module/main-header';
+@import './module/form-validation';
+@import './module/search-by-category';
+@import './module/gallery-svgs';
+@import './module/color-svg';

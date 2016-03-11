@@ -1,5 +1,6 @@
 'use strict';
 import template from './home.html';
+import './home.scss';
 
 
 export default {
@@ -9,5 +10,4 @@ export default {
   },
   template,
   controller: 'homeCtrl'
-
 };

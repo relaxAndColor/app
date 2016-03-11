@@ -1,46 +1,53 @@
-<div>
+<form name='userForm' novalidate>
   <h3>{{formType}}</h3>
   <form name='userForm' novalidate>
 
-      <div>
-        <label for="email">Email: </label>
-        <input type="email"
-          name="email"
-          ng-model="userInfo.email"
-          placeholder="Email"
-          ng-model-options="{ updateOn: 'default blur', debounce: { default: 250, blur: 0 } }"
-          no-whitespace-validator
-          required
-          >
-        <div ng-messages="userForm.email.$error" ng-if="userForm.$submitted || userForm.email.$touched">
-          <div class='form-error' ng-message="required">Email Required</div>
-          <div class='form-error' ng-message="email">Needs to be a valid email...</div>
-          <div class='form-error' ng-message="noWhitespaceValidator">Email cannot contain spaces </div>
-        </div>
+    <div>
+      <label for="email">Email: </label>
+      <input type="email"
+        name="email"
+        ng-model="userInfo.email"
+        placeholder="Email"
+        ng-model-options="{ updateOn: 'default blur', debounce: { default: 250, blur: 0 } }"
+        no-whitespace-validator
+        required
+        >
+      <div ng-messages="userForm.email.$error" ng-if="userForm.$submitted || userForm.email.$touched">
+        <div class='form-error' ng-message="required">Email Required</div>
+        <div class='form-error' ng-message="email">Needs to be a valid email...</div>
+        <div class='form-error' ng-message="noWhitespaceValidator">Email cannot contain spaces </div>
       </div>
-      <br>
-      <div>
-        <label for="password">Password: </label>
-        <input type="password"
-          ng-model="userInfo.password"
-          placeholder="Password"
-          name="password"
-          ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"
-          no-whitespace-validator
-          password-params-validator
-          pattern='[a-zA-Z\d]+'
-          minLength='6'
-          required
-          >
-        <div ng-messages="userForm.password.$error" ng-if="userForm.$submitted || userForm.password.$touched">
-           <div class='form-error' ng-message="required" >Password Required</div>
-           <div class='form-error' ng-message="minlength">Password must be at least 6 characters...</div>
-           <div class='form-error' ng-message="noWhitespaceValidator">Password cannot contain spaces</div>
-           <div class='form-error' ng-message="passwordParamsValidator">Password must contain at least one a-z, A-Z, 0-9</div>
-           <div class='form-error' ng-message="pattern">Can only contain letters or numbers</div>
-        </div>
+    </div>
+
+    <br>
+
+    <div>
+      <label for="password">Password: </label>
+      <input type="password"
+        ng-model="userInfo.password"
+        placeholder="Password"
+        name="password"
+        ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"
+        no-whitespace-validator
+        password-params-validator
+        pattern='[a-zA-Z\d]+'
+        minLength='6'
+        required
+        >
+      <div ng-messages="userForm.password.$error" ng-if="userForm.$submitted || userForm.password.$touched">
+         <div class='form-error' ng-message="required" >Password Required</div>
+         <div class='form-error' ng-message="minlength">Password must be at least 6 characters...</div>
+         <div class='form-error' ng-message="noWhitespaceValidator">Password cannot contain spaces</div>
+         <div class='form-error' ng-message="passwordParamsValidator">Password must contain at least one a-z, A-Z, 0-9</div>
+         <div class='form-error' ng-message="pattern">Can only contain letters or numbers</div>
       </div>
-      <br>
-    <button type="submit" ng-click='userForm.$valid ? signin() : return'>Submit</button>
-  </form>
-</div>
+      <div ng-messages="userForm.password.$valid" ng-if="userForm.$submitted || userForm.password.$touched">
+         <div class='form-success'>Password Valid</div>
+      </div>
+    </div>
+
+    <br>
+
+    <button type="submit" ng-click='userForm.$valid ? signin() : return' class="pure-button">Submit</button>
+
+</form>
