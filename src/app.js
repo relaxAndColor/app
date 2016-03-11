@@ -1,6 +1,7 @@
 'use strict';
 /* Styling */
 import './style/colorpicker.css';
+import './style/main.scss';
 
 /* Vendors */
 import angular from 'angular' ;
@@ -21,6 +22,9 @@ import factories from './providers/factories';
 
 /* Directives */
 import directives from './components/directives';
+
+/*Validators */
+import validators from './components/form-validations';
 
 /*State Controllers */
 import stateControllers from './providers/state-provider/state-controllers';

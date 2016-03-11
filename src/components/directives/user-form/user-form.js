@@ -1,5 +1,6 @@
 'use strict';
 import template from './user-form.html';
+import './user-form.scss';
 
 export default function( ngModule ) {
 	ngModule.directive( 'userForm', function(){
