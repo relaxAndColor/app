@@ -7,7 +7,7 @@
       <li class="pure-menu-item"><a ui-sref="gallery.category({categoryName:'Popular'})" class="pure-menu-link">Gallery</a></li>
       <li class="pure-menu-item"><a ui-sref="personalGallery" class="pure-menu-link">Personal Gallery</a></li>
       <li class="pure-menu-item"><a ui-sref="admin" ng-show='userPayload.admin' class="pure-menu-link">Admin</a></li>
-      <li class="pure-menu-item"><a ng-click="logout()" ng-show='userPayload.admin' class="pure-menu-link">Logout</a></li>
+      <li class="pure-menu-item"><a ng-click="logout()" ng-show='userPayload' class="pure-menu-link">Logout</a></li>
     </ul>
   </div>
 </nav>
