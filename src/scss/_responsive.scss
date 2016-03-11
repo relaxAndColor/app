@@ -52,11 +52,11 @@
         justify-content: center;
     }
     .pure-menu-list {
-        display: flex;
+        display: flex !important;
         flex-wrap: wrap;
     }
     .clear-nav {
-        margin-top: 200px;
+        margin-top: 200px !important;
     }
 }
 
